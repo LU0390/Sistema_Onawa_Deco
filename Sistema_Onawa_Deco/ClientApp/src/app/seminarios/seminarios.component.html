@@ -1,4 +1,3 @@
-<p>Usted esta en la seccion de  Seminarios</p>
 <h1>Seminarios</h1>
 <button [routerLink]='["/seminarios-agregar"]' class="btn btn-primary">
   Agregar Seminario
@@ -16,16 +15,16 @@
       <th>Id</th>
       <th>Descripcion</th>
       <th>Duracion</th>
-      <th>Costo</th>
+      <th>Precio</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr class="" *ngFor="let socio of ListadoProfesores">
+    <tr class="" *ngFor="let seminario of ListadoSeminarios">
       <td>{{ seminario.id }}</td>
       <td>{{ seminario.descripcion }}</td>
       <td>{{ seminario.duracion }}</td>
-      <td>{{ seminario.costo }}</td>
+      <td>{{ seminario.precio }}</td>
       <td>
         <button class="btn btn-primary" [routerLink]='["/seminarios-editar/" + seminario.id ] '>Modificar</button>
         <button class="btn btn-danger" (click)="eliminarSeminario(seminario)">Borrar</button>

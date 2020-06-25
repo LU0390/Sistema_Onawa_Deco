@@ -1,6 +1,6 @@
 export interface ISeminarios {
-  Id: number,
-  Descripcion: string,
-  Duracion: number,
-  Costo: number,
+  id: number,
+  descripcion: string,
+  duracion: number,
+  precio: number,
 }

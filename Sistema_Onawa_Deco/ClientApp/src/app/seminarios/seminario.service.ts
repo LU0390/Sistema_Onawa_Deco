@@ -13,13 +13,10 @@ export class SeminarioService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl:
     string) { }
 
-  get(): Observable<ISeminarios[]> {
+  getSeminarios(): Observable<ISeminarios[]> {
     return this.http.get<ISeminarios[]>(this.apiURL);
   }
 
-  getSeminarioesSocio(SocioDni: number): Observable<ISeminarios[]> {
-    return this.http.get<ISeminarios[]>(this.apiURL + '/inscripciones/' + SocioDni)
-  }
 
   getSeminarioesById(SeminarioId: number): Observable<ISeminarios> {
     return this.http.get<ISeminarios>(this.apiURL + '/' + SeminarioId)
@@ -31,11 +28,11 @@ export class SeminarioService {
 
   actualizarSeminario(seminario: ISeminarios): Observable<ISeminarios> {
 
-    if (isNaN(seminario.Id)) {
+    if (isNaN(seminario.id)) {
       console.log("NO ES NUMERICO");
     }
-    seminario.Id = +seminario.Id;
-    return this.http.put<ISeminarios>(this.apiURL + '/' + seminario.Id, seminario);
+    seminario.id = +seminario.id;
+    return this.http.put<ISeminarios>(this.apiURL + '/' + seminario.id, seminario);
   }
 
   borrarSeminario(seminarioId: number): Observable<ISeminarios> {

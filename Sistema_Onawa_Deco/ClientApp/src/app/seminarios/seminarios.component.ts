@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ISeminarios } from './ISeminarios';
+import { SeminarioService } from './seminario.service'
 
 @Component({
   selector: 'app-seminarios',
@@ -8,9 +9,22 @@ import { ISeminarios } from './ISeminarios';
 })
 export class SeminariosComponent implements OnInit {
   ListadoSeminarios: ISeminarios[];
-  constructor() { }
+  constructor(private SeminarioService: SeminarioService) { }
 
   ngOnInit() {
+    this.cargarSeminario();
   }
+
+  cargarSeminario() {
+    this.SeminarioService.getSeminarios()
+      .subscribe(seminariosDesdeApi => this.ListadoSeminarios= seminariosDesdeApi,
+        error => console.error(error));
+  }
+
+  eliminarSeminario(seminario: ISeminarios) {
+    this.SeminarioService.borrarSeminario(seminario.id)
+      .subscribe(seminario => this.cargarSeminario());
+  }
+
 
 }

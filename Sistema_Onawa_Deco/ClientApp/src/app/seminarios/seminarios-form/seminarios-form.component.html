@@ -1,1 +1,79 @@
-<p>seminarios-form works!</p>
+<h1>Agregar / Modificar Seminarios</h1>
+
+<form class="form-horizontal" novalidate [formGroup]="formGroup" (ngSubmit)="save()">
+
+  <fieldset>
+
+    <div class="form-group" [ngClass]="{ 'has-error':
+(
+  formGroup.get('descripcion').touched || formGroup.get('descripcion').dirty && !formGroup.get('descripcion').valid
+) } ">
+
+      <label class="col-md-2-control-label" for="descripcion">Descripcion</label>
+
+      <div class="col-md-8">
+        <input class="form-control"
+               id="descripcion"
+               type="text"
+               required
+               formControlName="descripcion" />
+
+      </div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error':
+(
+  formGroup.get('duracion').touched || formGroup.get('duracion').dirty && !formGroup.get('duracion').valid
+) } ">
+
+      <label class="col-md-2-control-label" for="duracion">Duracion (cantidad de clases)</label>
+
+      <div class="col-md-8">
+        <input class="form-control"
+               id="duracion"
+               type="number"
+               required
+               formControlName="duracion" />
+
+      </div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error':
+(
+  formGroup.get('precio').touched || formGroup.get('precio').dirty && !formGroup.get('precio').valid
+) } ">
+
+      <label class="col-md-2-control-label" for="precio">Precio</label>
+
+      <div class="col-md-8">
+        <input class="form-control"
+               id="precio"
+               type="number"
+               required
+               formControlName="precio" />
+
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+        <span>
+          <button class="btn btn-primary" type="submit"
+                  [disabled]="!formGroup.valid">
+            Guardar
+          </button>
+          <button class="btn"
+                  [routerLink]='["/seminarios"]'>
+            Cancelar
+          </button>
+
+        </span>
+      </div>
+    </div>
+
+  </fieldset>
+
+
+</form>
+
