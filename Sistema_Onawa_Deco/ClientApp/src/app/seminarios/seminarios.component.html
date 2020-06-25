@@ -1,0 +1,35 @@
+<p>Usted esta en la seccion de  Seminarios</p>
+<h1>Seminarios</h1>
+<button [routerLink]='["/seminarios-agregar"]' class="btn btn-primary">
+  Agregar Seminario
+</button>
+<p *ngIf="! ( ListadoSeminarios && ListadoSeminarios.length)">
+  No existen Seminarios cargados en el sistema
+
+</p>
+
+
+
+<table class="table table-striped" *ngIf="(ListadoSeminarios && ListadoSeminarios.length) ">
+  <thead class="thead-dark">
+    <tr>
+      <th>Id</th>
+      <th>Descripcion</th>
+      <th>Duracion</th>
+      <th>Costo</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="" *ngFor="let socio of ListadoProfesores">
+      <td>{{ seminario.id }}</td>
+      <td>{{ seminario.descripcion }}</td>
+      <td>{{ seminario.duracion }}</td>
+      <td>{{ seminario.costo }}</td>
+      <td>
+        <button class="btn btn-primary" [routerLink]='["/seminarios-editar/" + seminario.id ] '>Modificar</button>
+        <button class="btn btn-danger" (click)="eliminarSeminario(seminario)">Borrar</button>
+       </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,35 @@
+<h1>Usted esta en la seccion de Socios</h1>
+<button [routerLink]='["/socios-agregar"]' class="btn btn-primary">
+  Agregar Socios
+</button>
+<p *ngIf="! ( ListadoSocios && ListadoSocios.length)">
+  No existen Socios
+
+</p>
+
+
+
+<table class="table table-striped" *ngIf="(ListadoSocios && ListadoSocios.length) ">
+  <thead class="thead-dark">
+    <tr>
+      <th>DNI</th>
+      <th>Nombre</th>
+      <th>Fecha Nacimiento</th>
+      <th>Telefono</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="" *ngFor="let socio of ListadoSocios">
+      <td>{{ socio.id }}</td>
+      <td>{{ socio.nombre }}</td>
+      <td>{{ socio.fechaNacimiento | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ socio.telefonoContacto }}</td>
+      <td>
+        <button class="btn btn-primary" [routerLink]='["/socios-editar/" + socio.id ] '>Modificar</button>
+        <button class="btn btn-danger" (click)="eliminarSocio(socio)">Borrar</button>
+        <button class="btn btn-warning" [routerLink]='["/socios-seminarios/" + socio.id ] '><i class="fa fa-search"></i>Mostrar Seminarios</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
