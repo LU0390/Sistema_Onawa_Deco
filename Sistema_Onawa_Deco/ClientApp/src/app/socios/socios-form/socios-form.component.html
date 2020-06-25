@@ -1,4 +1,4 @@
-<h1>Agregar Socio</h1>
+<h1>Agregar / Modificar Socio</h1>
 
 <form class="form-horizontal" novalidate [formGroup]="formGroup" (ngSubmit)="save()">
 
@@ -18,17 +18,6 @@
                required
                formControlName="nombre" />
 
-
-        <!--<span class="help-block"
-              *ngIf="( formGroup.get('nombre').touched ||
-                     formGroup.get('nombre').dirty
-                     && !formGroup.valid ) ">
-          <span *ngIf="formGroup.get('nombre').errors?.required">
-            El campo es requerido
-          </span>
-        </span>-->
-
-
       </div>
     </div>
 
@@ -45,17 +34,6 @@
                type="number"
                required
                formControlName="telefonoContacto" />
-
-
-        <!--<span class="help-block"
-              *ngIf="( formGroup.get('numeroContacto').touched ||
-                     formGroup.get('numeroContacto').dirty
-                     && !formGroup.valid ) ">
-          <span *ngIf="formGroup.get('numeroContacto').errors?.required">
-            El campo es requerido
-          </span>
-        </span>-->
-
 
       </div>
     </div>
@@ -81,18 +59,6 @@
                type="date"
                required
                formControlName="fechaNacimiento" />
-
-        <!--<span class="help-block"
-              *ngIf="( formGroup.get('fechaNacimiento').touched ||
-                     formGroup.get('fechaNacimiento').dirty
-                     && !formGroup.valid ) ">
-          <span *ngIf="formGroup.get('fechaNacimiento').errors?.required">
-            El campo es requerido
-          </span>
-        </span>-->
-
-
-
       </div>
 
     </div>

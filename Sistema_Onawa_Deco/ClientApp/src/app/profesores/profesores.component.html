@@ -13,7 +13,7 @@
 <table class="table table-striped" *ngIf="(ListadoProfesores && ListadoProfesores.length) ">
   <thead class="thead-dark">
     <tr>
-      <th>Id</th>
+      <th>DNI</th>
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Mail</th>
@@ -23,15 +23,15 @@
   </thead>
   <tbody>
     <tr class="" *ngFor="let profesor of ListadoProfesores">
-      <td>{{ profesor.id }}</td>
+      <td>{{ profesor.dni }}</td>
       <td>{{ profesor.nombre }}</td>
       <td>{{ profesor.apellido }}</td>
       <td>{{ profesor.mail }}</td>
       <td>{{ profesor.telefono }}</td>
       <td>
-        <button class="btn btn-primary" [routerLink]='["/profesores-editar/" + profesor.id ] '>Modificar</button>
+        <button class="btn btn-primary" [routerLink]='["/profesores-editar/" + profesor.dni ] '>Modificar</button>
         <button class="btn btn-danger" (click)="eliminarProfesor(profesor)">Borrar</button>
-        <button class="btn btn-warning" [routerLink]='["/profesores-seminarios/" + profesor.id ] '><i class="fa fa-search"></i></button>
+        <button class="btn btn-warning" [routerLink]='["/profesores-seminarios/" + profesor.dni ] '><i class="fa fa-search"></i>Seminarios que dicta</button>
       </td>
     </tr>
   </tbody>

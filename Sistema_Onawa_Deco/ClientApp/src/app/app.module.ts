@@ -54,7 +54,7 @@ import { SeminariosFormComponent } from './seminarios/seminarios-form/seminarios
       
       { path: 'socios-editar/:id', component: SociosFormComponent },
       { path: 'seminarios-editar/:id', component: SeminariosFormComponent },
-      { path: 'profesor-editar/:dni', component: ProfesoresFormComponent },
+      { path: 'profesores-editar/:dni', component: ProfesoresFormComponent },
 
       { path: 'socios-seminarios/:id', component: SociosSeminariosComponent },
       { path: 'profesores-seminarios/:id', component: ProfesoresSeminariosFormComponent },

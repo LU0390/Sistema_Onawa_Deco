@@ -50,12 +50,6 @@ export class SociosFormComponent implements OnInit {
 
   save() {
     let socio: ISocios = Object.assign({}, this.formGroup.value);
-    debugger;
-    console.log(socio);
-    console.log(socio.id);
-    console.log(socio.fechaNacimiento);
-    console.log(socio.nombre);
-    console.log(socio.telefonoContacto);
     if (this.modoEdicion == true) {
       socio.id = +this.socioId;
       socio.fechaNacimiento = new Date(socio.fechaNacimiento);
@@ -80,7 +74,7 @@ export class SociosFormComponent implements OnInit {
       nombre: socio.nombre,
       telefonoContacto: socio.telefonoContacto,
       fechaNacimiento: socio.fechaNacimiento,
-      //fechaNacimiento: new Date( this.datePipe.transform(socio.fechaNacimiento, 'dd-MM-yyyy')),
+
     })
   }
 }

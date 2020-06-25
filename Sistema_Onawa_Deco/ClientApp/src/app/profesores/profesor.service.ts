@@ -27,7 +27,7 @@ export class ProfesorService {
   }
 
   actualizarProfesor(profesor: IProfesores): Observable<IProfesores> {
-    profesor.dni = +profesor.dni;
+    
     return this.http.put<IProfesores>(this.apiURL + '/' + profesor.dni, profesor);
   }
 
