@@ -28,18 +28,28 @@ namespace Sistema_Onawa_Deco.Controllers
         }
 
         // GET: api/ProfesoresSeminarios/5
+        /*  [HttpGet("{id}")]
+          public async Task<ActionResult<ProfesorSeminario>> GetProfesorSeminario(int id)
+          {
+              var profesorSeminario = await _context.ProfesorSeminarios.FindAsync(id);
+
+              if (profesorSeminario == null)
+              {
+                  return NotFound();
+              }
+
+              return profesorSeminario;
+          }
+        */
+
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProfesorSeminario>> GetProfesorSeminario(int id)
+        public List<Seminario> GetProfesorSeminario(int id)
         {
-            var profesorSeminario = await _context.ProfesorSeminarios.FindAsync(id);
-
-            if (profesorSeminario == null)
-            {
-                return NotFound();
-            }
-
-            return profesorSeminario;
+            return _context.ProfesorSeminarios
+                   .Include("Seminario")
+                   .Where(p => p.ProfesorDni == id).Select(m => m.Seminario).ToList();
         }
+
 
         // PUT: api/ProfesoresSeminarios/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -77,8 +87,11 @@ namespace Sistema_Onawa_Deco.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<ProfesorSeminario>> PostProfesorSeminario(ProfesorSeminario profesorSeminario)
+        public async Task<ActionResult<ProfesorSeminario>> PostProfesorSeminario(int profesorId, int seminarioID)
         {
+            ProfesorSeminario profesorSeminario = new ProfesorSeminario();
+            profesorSeminario.ProfesorDni = profesorId;
+            profesorSeminario.SeminarioId = seminarioID;
             _context.ProfesorSeminarios.Add(profesorSeminario);
             try
             {
@@ -101,17 +114,7 @@ namespace Sistema_Onawa_Deco.Controllers
 
 
 
-     /*  [HttpGet]
-        [Route("inscripciones/{id}")]
-        public List<Seminario> GetProfesorSeminario(int id)
-        {
-            return _context.ProfesorSeminarios
-                   .Include("Seminario")
-                   .Where(p => p.ProfesorDni == id).Select(m => m.Seminario).ToList();
-        }
 
-
-        */
         // DELETE: api/ProfesoresSeminarios/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<ProfesorSeminario>> DeleteProfesorSeminario(int id)

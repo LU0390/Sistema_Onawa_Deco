@@ -44,14 +44,17 @@
     <tr>
       <th>Id</th>
       <th>Descripcion</th>
+      <th>Duracion</th>
       <th>Precio</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr class="" *ngFor="let semi of ListadoSeminariosDictados">
-      <td>{{ semi.DniProfesor }}</td>
-      <td>{{ semi.IdSeminario }}</td>
+      <td>{{ semi.Id }}</td>
+      <td>{{ semi.Descripcion }}</td>
+      <td>{{ semi.Duracion }}</td>
+      <td>{{ semi.Precio }}</td>
       <td>
         <button class="btn btn-danger" (click)="borrarAsociacion(semi.id)"><i class="fa fa-trash"></i></button>
       </td>

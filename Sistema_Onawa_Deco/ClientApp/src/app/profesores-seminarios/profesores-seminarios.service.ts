@@ -22,8 +22,8 @@ export class ProfesoresSeminariosService {
     return this.http.delete(this.apiURL + '?profesorId=' + ProfesorId + '&seminarioId=' + SeminarioId)
   }
 
-  getInscripcionesProfesores(profesorDni: number): Observable<IProfesoresSeminarios[]> {
-    return this.http.get<IProfesoresSeminarios[]>(this.apiURL + '?id=' + profesorDni);
+  getInscripcionesProfesores(profesorDni: number): Observable<ISeminarios[]> {
+    return this.http.get<ISeminarios[]>(this.apiURL + '?id=' + profesorDni);
   }
 
 }

@@ -18,8 +18,7 @@ import { IProfesoresSeminarios } from 'src/app/profesores-seminarios/IProfesores
 export class ProfesoresSeminariosFormComponent implements OnInit {
 
   ListadoSeminariosCombo: ISeminarios[];
-  // ListadoSeminariosDictados: ISeminarios[];
-  ListadoSeminariosDictados: IProfesoresSeminarios[];
+  ListadoSeminariosDictados: ISeminarios[];
   ProfesorId: number;
   Profesor: IProfesores;
   SeminarioSeleccionado: number;
