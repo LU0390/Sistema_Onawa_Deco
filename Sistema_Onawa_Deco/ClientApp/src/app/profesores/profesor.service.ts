@@ -34,9 +34,7 @@ export class ProfesorService {
   borrarProfesor(ProfesorDni: number): Observable<IProfesores> {
     return this.http.delete<IProfesores>(this.apiURL + '/' + ProfesorDni)
   }
-  getInscripcionesProfesores(profesorDni: number): Observable<ISeminarios[]> {
-    return this.http.get<ISeminarios[]>(this.apiURL + '/inscripciones/' + profesorDni);
-  }
+
 
 
 }

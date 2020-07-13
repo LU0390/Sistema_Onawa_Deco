@@ -99,6 +99,19 @@ namespace Sistema_Onawa_Deco.Controllers
             return CreatedAtAction("GetProfesorSeminario", new { id = profesorSeminario.ProfesorDni }, profesorSeminario);
         }
 
+
+
+     /*  [HttpGet]
+        [Route("inscripciones/{id}")]
+        public List<Seminario> GetProfesorSeminario(int id)
+        {
+            return _context.ProfesorSeminarios
+                   .Include("Seminario")
+                   .Where(p => p.ProfesorDni == id).Select(m => m.Seminario).ToList();
+        }
+
+
+        */
         // DELETE: api/ProfesoresSeminarios/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<ProfesorSeminario>> DeleteProfesorSeminario(int id)
