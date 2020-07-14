@@ -23,7 +23,7 @@ export class ProfesoresSeminariosService {
   }
 
   getInscripcionesProfesores(profesorDni: number): Observable<ISeminarios[]> {
-    return this.http.get<ISeminarios[]>(this.apiURL + '?id=' + profesorDni);
+    return this.http.get<ISeminarios[]>(this.apiURL + '/' + profesorDni);
   }
 
 }

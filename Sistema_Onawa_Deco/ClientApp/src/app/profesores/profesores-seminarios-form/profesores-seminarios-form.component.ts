@@ -62,7 +62,12 @@ export class ProfesoresSeminariosFormComponent implements OnInit {
         error => console.error(error));
   }
 
-  cargarAsociaciones() {
+  //cargarAsociaciones() {
+  //  this.ProfesorSeminarioServicio.getInscripcionesProfesores(this.ProfesorId)
+  //    .subscribe(semi => this.ListadoSeminariosDictados = semi,
+  //      error => console.error(error));
+  //}
+   cargarAsociaciones() {
     this.ProfesorSeminarioServicio.getInscripcionesProfesores(this.ProfesorId)
       .subscribe(semi => this.ListadoSeminariosDictados = semi,
         error => console.error(error));
@@ -83,6 +88,7 @@ export class ProfesoresSeminariosFormComponent implements OnInit {
     this.SeminarioSeleccionado = SeminariosId;
     this.ProfesorSeminarioServicio.borrarProfesorseminario(this.ProfesorId, this.SeminarioSeleccionado)
       .subscribe();
+
     this.cargarAsociaciones();
   }
 

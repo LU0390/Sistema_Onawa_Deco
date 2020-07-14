@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Sistema_Onawa_Deco.Models;
 
@@ -21,17 +22,18 @@ namespace Sistema_Onawa_Deco.Controllers
         }
 
         // GET: api/ProfesoresSeminarios
-        [HttpGet]
+       /* [HttpGet]
         public async Task<ActionResult<IEnumerable<ProfesorSeminario>>> GetProfesorSeminarios()
         {
             return await _context.ProfesorSeminarios.ToListAsync();
         }
-
+       */
         // GET: api/ProfesoresSeminarios/5
         /*  [HttpGet("{id}")]
           public async Task<ActionResult<ProfesorSeminario>> GetProfesorSeminario(int id)
           {
-              var profesorSeminario = await _context.ProfesorSeminarios.FindAsync(id);
+              var profesorSeminario = await _context.Pro
+        fesorSeminarios.FindAsync(id);
 
               if (profesorSeminario == null)
               {
@@ -41,9 +43,11 @@ namespace Sistema_Onawa_Deco.Controllers
               return profesorSeminario;
           }
         */
-
+        
+        // GET: api/ProfesoresSeminarios/5
         [HttpGet("{id}")]
         public List<Seminario> GetProfesorSeminario(int id)
+        
         {
             return _context.ProfesorSeminarios
                    .Include("Seminario")
@@ -116,10 +120,10 @@ namespace Sistema_Onawa_Deco.Controllers
 
 
         // DELETE: api/ProfesoresSeminarios/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<ProfesorSeminario>> DeleteProfesorSeminario(int id)
+        [HttpDelete]
+        public async Task<ActionResult<ProfesorSeminario>> DeleteRelacionProfesorSeminario(int profesorId, int seminarioID)
         {
-            var profesorSeminario = await _context.ProfesorSeminarios.FindAsync(id);
+            var profesorSeminario = await _context.ProfesorSeminarios.FindAsync( profesorId, seminarioID);
             if (profesorSeminario == null)
             {
                 return NotFound();
