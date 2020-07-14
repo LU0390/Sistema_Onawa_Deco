@@ -1,6 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ISeminariosSocios } from './ISeminarios-socios';
+import { ISeminarios } from '../seminarios/ISeminarios'
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,10 @@ export class SeminariosSociosService {
 
   borrarsocioseminario(socioId: number, SeminarioId: number): Observable<{}> {
     return this.http.delete(this.apiURL + '?socioId=' + socioId + '&seminarioId=' + SeminarioId)
+  }
+
+  getInscripcionesSocios(SocioId: number): Observable<ISeminarios[]> {
+    return this.http.get<ISeminarios[]>(this.apiURL + '/' + SocioId);
   }
 
 }

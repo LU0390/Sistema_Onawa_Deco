@@ -21,28 +21,6 @@ namespace Sistema_Onawa_Deco.Controllers
             _context = context;
         }
 
-        // GET: api/ProfesoresSeminarios
-       /* [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProfesorSeminario>>> GetProfesorSeminarios()
-        {
-            return await _context.ProfesorSeminarios.ToListAsync();
-        }
-       */
-        // GET: api/ProfesoresSeminarios/5
-        /*  [HttpGet("{id}")]
-          public async Task<ActionResult<ProfesorSeminario>> GetProfesorSeminario(int id)
-          {
-              var profesorSeminario = await _context.Pro
-        fesorSeminarios.FindAsync(id);
-
-              if (profesorSeminario == null)
-              {
-                  return NotFound();
-              }
-
-              return profesorSeminario;
-          }
-        */
         
         // GET: api/ProfesoresSeminarios/5
         [HttpGet("{id}")]

@@ -20,26 +20,18 @@ namespace Sistema_Onawa_Deco.Controllers
             _context = context;
         }
 
-        // GET: api/SeminariosSocios
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<SeminarioSocio>>> GetSocioSeminario()
-        {
-            return await _context.SocioSeminario.ToListAsync();
-        }
-
         // GET: api/SeminariosSocios/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SeminarioSocio>> GetSeminarioSocio(int id)
+        public List<Seminario> GetSocioSeminario(int id)
+
         {
-            var seminarioSocio = await _context.SocioSeminario.FindAsync(id);
-
-            if (seminarioSocio == null)
-            {
-                return NotFound();
-            }
-
-            return seminarioSocio;
+            return _context.SocioSeminario
+                   .Include("Seminario")
+                   .Where(p => p.SocioId == id).Select(m => m.Seminario).ToList();
         }
+
+
+
 
         // PUT: api/SeminariosSocios/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -77,16 +69,19 @@ namespace Sistema_Onawa_Deco.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<SeminarioSocio>> PostSeminarioSocio(SeminarioSocio seminarioSocio)
+        public async Task<ActionResult<ProfesorSeminario>> PostSocioSeminario(int socioId, int seminarioID)
         {
-            _context.SocioSeminario.Add(seminarioSocio);
+            SeminarioSocio socioSeminario = new SeminarioSocio();
+            socioSeminario.SocioId = socioId;
+            socioSeminario.SeminarioId = seminarioID;
+            _context.SocioSeminario.Add(socioSeminario);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (SeminarioSocioExists(seminarioSocio.SocioId))
+                if (SeminarioSocioExists(socioSeminario.SocioId))
                 {
                     return Conflict();
                 }
@@ -96,25 +91,25 @@ namespace Sistema_Onawa_Deco.Controllers
                 }
             }
 
-            return CreatedAtAction("GetSeminarioSocio", new { id = seminarioSocio.SocioId }, seminarioSocio);
+            return CreatedAtAction("GetSocioSeminario", new { id = socioSeminario.SocioId }, socioSeminario);
         }
 
+
         // DELETE: api/SeminariosSocios/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<SeminarioSocio>> DeleteSeminarioSocio(int id)
+        [HttpDelete]
+        public async Task<ActionResult<SeminarioSocio>> DeleteRelacionSocioSeminario(int socioId, int seminarioID)
         {
-            var seminarioSocio = await _context.SocioSeminario.FindAsync(id);
-            if (seminarioSocio == null)
+            var socioSeminario = await _context.SocioSeminario.FindAsync(socioId, seminarioID);
+            if (socioSeminario == null)
             {
                 return NotFound();
             }
 
-            _context.SocioSeminario.Remove(seminarioSocio);
+            _context.SocioSeminario.Remove(socioSeminario);
             await _context.SaveChangesAsync();
 
-            return seminarioSocio;
+            return socioSeminario;
         }
-
         private bool SeminarioSocioExists(int id)
         {
             return _context.SocioSeminario.Any(e => e.SocioId == id);

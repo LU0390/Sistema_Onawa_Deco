@@ -1,1 +1,65 @@
-<p>socios-seminarios works!</p>
+<h1>Seminarios del Socio</h1>
+<button [routerLink]='["/socios"]' class="btn btn-primary">
+  Volver
+</button>
+
+<div *ngIf="Socio">
+  <div class="form-group">
+    <label class="font-weight-bolder">ID:</label>
+    <label>{{Socio.id}}</label>
+  </div>
+
+  <div class="form-group">
+    <label class="font-weight-bolder">Nombre:</label>
+    <label>{{Socio.nombre}}</label>
+  </div>
+  <div class="form-group">
+    <label class="font-weight-bolder">Numero de Contacto:</label>
+    <label>{{Socio.telefonoContacto}}</label>
+  </div>
+</div>
+
+
+
+<div class="form-inline">
+  <label class="font-weight-bolder" for="ComboSeminarios">Asociar seminario al socio</label>
+
+  <select class="form-control" id="ComboSeminarios"
+          [ngModel]="ListadoSeminariosCombo" (change)="cambioSeminarios($event);"
+          required name="ComboSeminarios">
+    <option *ngFor="let semi of ListadoSeminariosCombo" [value]="semi.id">Seminario: {{ semi.descripcion }} - Precio: {{semi.precio}} </option>
+  </select>
+
+
+  <button class="btn btn-primary" (click)='guardarAsociacion()'>Registrar</button>
+</div>
+
+
+
+<p *ngIf="! ( ListadoSeminariosRegistrados && ListadoSeminariosRegistrados.length)">
+  No se encuentra registrado para ningun Seminario
+</p>
+<table class="table table-striped" *ngIf="(ListadoSeminariosRegistrados && ListadoSeminariosRegistrados.length) ">
+  <thead class="thead-dark">
+    <tr>
+      <th>Id</th>
+      <th>Descripcion</th>
+      <th>Duracion</th>
+      <th>Precio</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="" *ngFor="let semi of ListadoSeminariosRegistrados">
+      <td>{{ semi.id }}</td>
+      <td>{{ semi.descripcion }}</td>
+      <td>{{ semi.duracion }}</td>
+      <td>{{ semi.precio }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="borrarAsociacion(semi.id)"><span class="fa fa-trash">Borrar</span></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
