@@ -1,5 +1,5 @@
-<h1>Seminarios</h1>
-<button [routerLink]='["/seminarios-agregar"]' class="btn btn-primary">
+<h3>Listado de seminarios</h3>
+<button [routerLink]='["/seminarios-agregar"]' class="btn btn-primary" style="background-color:lightgreen">
   Agregar Seminario
 </button>
 <p *ngIf="! ( ListadoSeminarios && ListadoSeminarios.length)">
@@ -13,21 +13,21 @@
   <thead class="thead-dark">
     <tr>
       <th>Id</th>
-      <th>Descripcion</th>
-      <th>Duracion</th>
+      <th>Nombre</th>
+      <th>Duracion (N° Clases)</th>
       <th>Precio</th>
       <th></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="table-secondary">
     <tr class="" *ngFor="let seminario of ListadoSeminarios">
       <td>{{ seminario.id }}</td>
       <td>{{ seminario.descripcion }}</td>
       <td>{{ seminario.duracion }}</td>
       <td>{{ seminario.precio }}</td>
       <td>
-        <button class="btn btn-primary" [routerLink]='["/seminarios-editar/" + seminario.id ] '>Modificar</button>
-        <button class="btn btn-danger" (click)="eliminarSeminario(seminario)">Borrar</button>
+        <button class="btn btn-success" style="background-color:lightseagreen" [routerLink]='["/seminarios-editar/" + seminario.id ] '>Modificar</button>
+        <button class="btn btn-danger" style="background-color:lightsalmon" (click)="eliminarSeminario(seminario)">Borrar</button>
        </td>
     </tr>
   </tbody>

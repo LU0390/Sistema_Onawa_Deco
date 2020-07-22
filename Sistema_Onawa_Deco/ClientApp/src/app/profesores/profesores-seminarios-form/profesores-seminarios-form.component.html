@@ -1,5 +1,5 @@
-<h1>Asociar profesor a seminarios</h1>
-<button [routerLink]='["/profesores"]' class="btn btn-primary">
+<h3>Asociar profesor a seminarios que va a dictar</h3>
+<button [routerLink]='["/profesores"]' class="btn btn-primary" style="background-color:lightslategrey">
   Volver
 </button>
 
@@ -31,32 +31,32 @@
   </select>
 
 
-  <button class="btn btn-primary" (click)='guardarAsociacion()'>Asociar</button>
+  <button class="btn btn-primary" (click)='guardarAsociacion()' style="background-color:lightseagreen">Asociar</button>
 </div>
 
 
 
 <p *ngIf="! ( ListadoSeminariosDictados && ListadoSeminariosDictados.length)">
-  No existen Seminarios
+  Todavia no esta asociado el profesor a ningun asociado
 </p>
 <table class="table table-striped" *ngIf="(ListadoSeminariosDictados && ListadoSeminariosDictados.length) ">
   <thead class="thead-dark">
     <tr>
-      <th>Id</th>
+      <th>Id Curso</th>
       <th>Descripcion</th>
-      <th>Duracion</th>
+      <th>Duracion (N° Clases)</th>
       <th>Precio</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr class="" *ngFor="let semi of ListadoSeminariosDictados">
+    <tr class="table-secondary" *ngFor="let semi of ListadoSeminariosDictados">
       <td>{{ semi.id }}</td>
       <td>{{ semi.descripcion }}</td>
       <td>{{ semi.duracion }}</td>
       <td>{{ semi.precio }}</td>
       <td>
-        <button class="btn btn-danger" (click)="borrarAsociacion(semi.id)"><span class="fa fa-trash">Borrar</span></button>
+        <button class="btn btn-danger"  style="background-color:lightcoral" (click)="borrarAsociacion(semi.id)"><span class="fa fa-trash">Borrar</span></button>
       </td>
     </tr>
   </tbody>

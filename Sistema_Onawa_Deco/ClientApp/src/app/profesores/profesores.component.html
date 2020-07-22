@@ -1,5 +1,5 @@
-<h1>Profesores</h1>
-<button [routerLink]='["/profesores-agregar"]' class="btn btn-primary">
+<h3>Listado de Profesores</h3>
+<button [routerLink]='["/profesores-agregar"]' class="btn btn-primary" style="background-color:lightgreen">
   Agregar Profesor
 </button>
 <p *ngIf="! ( ListadoProfesores && ListadoProfesores.length)">
@@ -21,16 +21,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="" *ngFor="let profesor of ListadoProfesores">
+    <tr class="table-secondary" *ngFor="let profesor of ListadoProfesores">
       <td>{{ profesor.dni }}</td>
       <td>{{ profesor.nombre }}</td>
       <td>{{ profesor.apellido }}</td>
       <td>{{ profesor.mail }}</td>
       <td>{{ profesor.telefono }}</td>
       <td>
-        <button class="btn btn-primary" [routerLink]='["/profesores-editar/" + profesor.dni ] '>Modificar</button>
-        <button class="btn btn-danger" (click)="eliminarProfesor(profesor)">Borrar</button>
-        <button class="btn btn-warning" [routerLink]='["/profesores-seminarios/" + profesor.dni ] '><i class="fa fa-search"></i>Seminarios que dicta</button>
+        <button class="btn btn-primary" style="background-color:lightseagreen" [routerLink]='["/profesores-editar/" + profesor.dni ] '>Modificar</button>
+        <button class="btn btn-danger" style="background-color:lightcoral" (click)="eliminarProfesor(profesor)">Borrar</button>
+        <button class="btn btn-warning" style="background-color:lightyellow" [routerLink]='["/profesores-seminarios/" + profesor.dni ] '><i class="fa fa-search"></i>Seminarios que dicta</button>
       </td>
     </tr>
   </tbody>

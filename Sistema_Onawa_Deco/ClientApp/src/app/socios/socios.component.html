@@ -1,5 +1,5 @@
-<h1>Socios</h1>
-<button [routerLink]='["/socios-agregar"]' class="btn btn-primary">
+<h3>Listado de Socios</h3>
+<button [routerLink]='["/socios-agregar"]' class="btn btn-primary" style="background-color:lightgreen">
   Agregar Socio
 </button>
 <p *ngIf="! ( ListadoSocios && ListadoSocios.length)">
@@ -20,15 +20,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="" *ngFor="let socio of ListadoSocios">
+    <tr class="table-secondary" *ngFor="let socio of ListadoSocios">
       <td>{{ socio.id }}</td>
       <td>{{ socio.nombre }}</td>
       <td>{{ socio.fechaNacimiento | date: 'dd/MM/yyyy' }}</td>
       <td>{{ socio.telefonoContacto }}</td>
       <td>
-        <button class="btn btn-primary" [routerLink]='["/socios-editar/" + socio.id ] '>Modificar</button>
-        <button class="btn btn-danger" (click)="eliminarSocio(socio)">Borrar</button>
-        <button class="btn btn-warning" [routerLink]='["/socios-seminarios/" + socio.id ] '><i class="fa fa-search"></i>Mostrar Seminarios</button>
+        <button class="btn btn-primary" style="background-color:lightblue"  [routerLink]='["/socios-editar/" + socio.id ] '>Modificar</button>
+        <button class="btn btn-danger" style="background-color:lightcoral" (click)="eliminarSocio(socio)">Borrar</button>
+        <button class="btn btn-warning" style="background-color:lightgoldenrodyellow" [routerLink]='["/socios-seminarios/" + socio.id ] '><i class="fa fa-search"></i>Mostrar Seminarios</button>
       </td>
     </tr>
   </tbody>

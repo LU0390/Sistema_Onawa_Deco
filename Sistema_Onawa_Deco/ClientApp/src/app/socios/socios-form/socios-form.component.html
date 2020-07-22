@@ -1,4 +1,4 @@
-<h1>Agregar / Modificar Socio</h1>
+<h5>Ingrese o modifique los datos del Socio</h5>
 
 <form class="form-horizontal" novalidate [formGroup]="formGroup" (ngSubmit)="save()">
 
@@ -39,11 +39,6 @@
     </div>
 
 
-
-
-
-
-
     <div class="form-group" [ngClass]="{ 'has-error':
 (
   formGroup.get('fechaNacimiento').touched || formGroup.get('fechaNacimiento').dirty && !formGroup.get('fechaNacimiento').valid
@@ -51,7 +46,7 @@
 
 
 
-      <label class="col-md-2-control-label" for="nombre">fechaNacimiento</label>
+      <label class="col-md-2-control-label" for="fechaNacimiento">Fecha de Nacimiento</label>
 
       <div class="col-md-8">
         <input class="form-control"
@@ -69,10 +64,10 @@
       <div class="col-md-4 col-md-offset-2">
         <span>
           <button class="btn btn-primary" type="submit"
-                  [disabled]="!formGroup.valid">
+                  [disabled]="!formGroup.valid" style="background-color:lightgreen">
             Guardar
           </button>
-          <button class="btn"
+          <button class="btn" style="background-color:lightsteelblue"
                   [routerLink]='["/socios"]'>
             Cancelar
           </button>

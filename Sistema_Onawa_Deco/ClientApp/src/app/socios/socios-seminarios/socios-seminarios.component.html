@@ -1,5 +1,5 @@
-<h1>Seminarios del Socio</h1>
-<button [routerLink]='["/socios"]' class="btn btn-primary">
+<h5>Listado de los seminarios en los que esta inscripto el Socio</h5>
+<button [routerLink]='["/socios"]' class="btn btn-primary" style="background-color:lightgreen">
   Volver
 </button>
 
@@ -31,7 +31,7 @@
   </select>
 
 
-  <button class="btn btn-primary" (click)='guardarAsociacion()'>Registrar</button>
+  <button class="btn btn-primary" (click)='guardarAsociacion()' style="background-color:lightpink">Registrar</button>
 </div>
 
 
@@ -44,19 +44,19 @@
     <tr>
       <th>Id</th>
       <th>Descripcion</th>
-      <th>Duracion</th>
+      <th>Duracion (N° Clases)</th>
       <th>Precio</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr class="" *ngFor="let semi of ListadoSeminariosRegistrados">
+    <tr class="table-secondary" *ngFor="let semi of ListadoSeminariosRegistrados">
       <td>{{ semi.id }}</td>
       <td>{{ semi.descripcion }}</td>
       <td>{{ semi.duracion }}</td>
       <td>{{ semi.precio }}</td>
       <td>
-        <button class="btn btn-danger" (click)="borrarAsociacion(semi.id)"><span class="fa fa-trash">Borrar</span></button>
+        <button class="btn btn-danger" style="background-color:lightcoral" (click)="borrarAsociacion(semi.id)"><span class="fa fa-trash">Borrar</span></button>
       </td>
     </tr>
   </tbody>

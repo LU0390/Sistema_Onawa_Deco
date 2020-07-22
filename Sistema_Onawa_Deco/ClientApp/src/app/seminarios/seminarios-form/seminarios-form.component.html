@@ -1,4 +1,4 @@
-<h1>Agregar / Modificar Seminarios</h1>
+<h5>Ingrese o modifique los datos del Seminario</h5>
 
 <form class="form-horizontal" novalidate [formGroup]="formGroup" (ngSubmit)="save()">
 
@@ -59,11 +59,12 @@
     <div class="form-group">
       <div class="col-md-4 col-md-offset-2">
         <span>
-          <button class="btn btn-primary" type="submit"
+          <button class="btn btn-primary" type="submit" style="background-color:lightgreen"
                   [disabled]="!formGroup.valid">
             Guardar
           </button>
-          <button class="btn"
+          <button class="btn" style="background-color:lightblue"
+
                   [routerLink]='["/seminarios"]'>
             Cancelar
           </button>

@@ -19,7 +19,8 @@ export class SociosFormComponent implements OnInit {
   socioId: number;
 
   constructor(private fb: FormBuilder, private SocioService: SocioService,
-    private router: Router, private activateddRoute: ActivatedRoute) {
+    private router: Router, private activateddRoute: ActivatedRoute,
+    private datePipe: DatePipe) {
     this.activateddRoute.params.subscribe(
       params => {
 
@@ -73,8 +74,7 @@ export class SociosFormComponent implements OnInit {
     this.formGroup.patchValue({
       nombre: socio.nombre,
       telefonoContacto: socio.telefonoContacto,
-      fechaNacimiento: socio.fechaNacimiento,
-
+      fechaNacimiento: this.datePipe.transform(socio.fechaNacimiento, 'yyyy-MM-dd'),
     })
   }
 }
